@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import time
 
 import rospy
@@ -9,12 +11,16 @@ NUM_JOINTS = 5
 RATE = 30
 
 SIN_BASE_A = pi / 2
-SIN_JOINTS_A = pi / 8
+SIN_JOINTS_A = pi / 6
 
 # y = b + A*sin(w*t + q)
-b = [pi, pi / 2 - pi / 8, pi + pi / 6, pi / 2 + pi / 12, pi]
+b = [pi - 0.174345 + 0.000050,
+     pi / 2 - 0.437712 + 0.003676 - 0.000169,
+     pi + 0.596362 - 0.004473 + 0.000081,
+     pi / 2 + 0.218688 - 0.001109 - 0.000437,
+     pi - 0.218036 + 0.000138]
 A = [SIN_BASE_A, SIN_JOINTS_A, SIN_JOINTS_A, SIN_JOINTS_A, SIN_JOINTS_A]
-w = [2.0, 2.7, 3.2, 3.6, 4.1]
+w = [1.0, 2.0, 3.0, 4.0, 5.0]
 q = [random.random() * pi for i in range(NUM_JOINTS)]
 # A = [0, 0, 0, 0, 0]
 
